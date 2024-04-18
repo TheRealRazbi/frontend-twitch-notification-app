@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "name": "StreamerOne",
+        "isLive": true,
+        "game": "Minecraft",
+        "viewers": 532
+    },
+    {
+        "id": "2",
+        "name": "StreamerTwo",
+        "isLive": false,
+        "game": "Fortnite",
+        "viewers": 0
+    },
+    {
+        "id": "3",
+        "name": "StreamerThree",
+        "isLive": true,
+        "game": "League of Legends",
+        "viewers": 1200
+    }
+]
