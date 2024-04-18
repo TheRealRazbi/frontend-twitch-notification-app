@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StreamerItem from './StreamerItem';
-import mockStreamers from '../MockStreamers.json'; // Adjust the path as necessary
+import mockStreamers from '../MockStreamers.json';
 
 function StreamerList() {
   const [streamers, setStreamers] = useState([]);
