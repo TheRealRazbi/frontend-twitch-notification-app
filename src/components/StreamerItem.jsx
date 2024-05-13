@@ -1,6 +1,7 @@
 import React from 'react';
 import '../Styles/StreamerItem.css';
 
+
 function StreamerItem({ streamer }) {
   return (
     <div className={`streamer-item ${streamer.isLive ? 'live' : 'offline'}`}>
