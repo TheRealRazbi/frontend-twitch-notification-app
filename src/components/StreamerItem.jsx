@@ -9,9 +9,14 @@ function StreamerItem({ streamer }) {
       <p>{streamer.game}</p>
       <span>Status: {streamer.isLive ? 'Live' : 'Offline'}</span>
       {streamer.isLive && <span>Viewers: {streamer.viewers}</span>}
-      <button>Watch</button>
+      {streamer.isLive && (
+        <button onClick={() => window.open(streamer.url, '_blank')} className="watch-button">
+          Watch
+        </button>
+      )}
     </div>
   );
 }
+
 
 export default StreamerItem;

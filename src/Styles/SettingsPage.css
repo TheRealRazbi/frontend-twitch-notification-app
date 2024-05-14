@@ -1,0 +1,93 @@
+.streamers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+  }
+  
+  .streamer-card {
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;  
+  }
+  
+  .streamer-name {
+    font-size: 16px;
+  }
+  
+  .unfollow-button {
+    background-color: black;
+    color: red;
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .unfollow-button:hover {
+    background-color: red;
+    color: white;
+  }
+  .add-streamer-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .streamer-input {
+    flex-grow: 1;
+    padding: 8px 10px;
+    border: 2px solid #555;  
+    background-color: #222;  
+    border-radius: 4px;
+    font-size: 16px;
+    color: white;  
+    outline: none;  
+  }
+  
+  .streamer-input:focus {
+    border-color: #6a0dad;  
+  }
+  
+  .settings-container {
+    padding: 50px; 
+    margin: 10px auto; 
+    max-width: 1200px; 
+  }
+  h2,h3,p {
+    text-align: center;
+  }
+  
+  .add-button {
+    padding: 10px 20px;  
+    border: none;
+    border-radius: 4px;
+    background-color: #333;  
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .add-button:hover {
+    background-color: #6a0dad;  
+    transform: scale(1.05);  
+  }
+  
+  .streamer-label {
+    margin-right: 10px;
+    color: #666;
+    font-size: 16px;
+  }
+  body {
+    background-color: #1a1a1a;  
+    color: #ccc;  
+    font-family: 'Arial', sans-serif;  
+  }
+  

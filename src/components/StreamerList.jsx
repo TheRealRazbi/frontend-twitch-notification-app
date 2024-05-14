@@ -11,7 +11,11 @@ function StreamerList() {
         const response = await axios.get('http://localhost:9620/api/streamers/live', {
         });
         console.log(response.data);
-        setStreamers(response.data);  
+        const updatedStreamers = response.data.map(streamer => ({
+          ...streamer,
+          url: `https://www.twitch.tv/${streamer.user_name}`
+        }));
+        setStreamers(updatedStreamers);  
       } catch (error) {
         console.error('Error fetching data: ', error);
       }
@@ -29,7 +33,8 @@ function StreamerList() {
           name: streamer.user_name, 
           game: streamer.game_name, 
           isLive: streamer.type, 
-          viewers: streamer.viewer_count 
+          viewers: streamer.viewer_count,
+          url: streamer.url
         }} />
       ))}
     </div>

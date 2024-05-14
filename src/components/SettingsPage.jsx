@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../Styles/SettingsPage.css';
 
 function SettingsPage() {
   const [streamerName, setStreamerName] = useState('');
@@ -9,11 +10,10 @@ function SettingsPage() {
     fetchStreamers();
   }, []);
 
-  // Function to fetch streamers from the backend
   const fetchStreamers = () => {
     axios.get('http://localhost:9620/api/streamers/list')
       .then(response => {
-        setStreamers(response.data); // Assume response data is structured { streamers: [] }
+        setStreamers(response.data); 
       })
       .catch(error => console.error('Failed to fetch streamers:', error));
   };
@@ -25,37 +25,53 @@ function SettingsPage() {
         streamers: [streamerName]
       })
       .then(() => {
-        fetchStreamers();  // Refetch the streamers from the backend to update the UI
-        setStreamerName('');  // Clear the input field
+        fetchStreamers();  
+        setStreamerName('');  
       })
       .catch(error => {
         console.error('Error adding streamer:', error);
       });
     }
   };
+  const handleUnfollow = streamer => {
+    axios.delete('/api/streamers/remove', {
+      data: { streamers: [streamer] }
+    })
+    .then(() => {
+      fetchStreamers();  // Refresh the list after unfollowing
+    })
+    .catch(error => {
+      console.error('Error removing streamer:', error);
+    });
+  };
 
   return (
-    <div>
+    <div className="settings-container">
       <h2>Settings</h2>
       <p>Manage your notification settings and subscriptions here.</p>
-      <form onSubmit={handleAddStreamer}>
-        <label htmlFor="streamerName">Add Streamer:</label>
+      <form onSubmit={handleAddStreamer} className="add-streamer-form">
+        <label htmlFor="streamerName" className="streamer-label">Add Streamer:</label>
         <input
           type="text"
           id="streamerName"
           value={streamerName}
+          className="streamer-input"
           onChange={(e) => setStreamerName(e.target.value)}
           placeholder="Enter streamer's name"
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="add-button">Add</button>
       </form>
       <h3>Followed Streamers:</h3>
-      <ul>
+      <div className="streamers-container">
         {streamers.map((streamer, index) => (
-          <li key={index}>{streamer}</li>
+          <div key={index} className="streamer-card">
+            <span className="streamer-name">{streamer}</span>
+            <button onClick={() => handleUnfollow(streamer)} className="unfollow-button">Unfollow</button>
+        </div>
         ))}
-      </ul>
+      </div>
     </div>
+
   );
 }
 
